@@ -1,0 +1,1 @@
+Registering a background script in the manifest tells the extension which file to reference, and how that file should behave.
