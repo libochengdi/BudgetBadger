@@ -1,0 +1,11 @@
+{
+    "name": "View History",
+    "description": "A Simple History Viewing Extension",
+    "version": "0.1",
+    "manifest_version": 2,
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "H2.jpg"
+    },
+    "permissions": ["history"]
+}
