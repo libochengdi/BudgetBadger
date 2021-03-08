@@ -16,8 +16,6 @@ chrome.tabs.onActivated.addListener(function() {
             }
             history.push(activeTab);
 
-            console.log(history);
-
             chrome.storage.local.set({items: history});
             history = null;
         });
