@@ -11,6 +11,9 @@ chrome.tabs.onActivated.addListener(function() {
                 'url': tabs[0].url,
                 'time': (new Date()).getTime()
             };
+            if (typeof(history) === "undefined") {
+                history = new Array();
+            }
             history.push(activeTab);
 
             console.log(history);
