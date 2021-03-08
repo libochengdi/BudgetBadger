@@ -9,7 +9,8 @@
     },
     "permissions": [
         "history",
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "background": {
         "scripts": ["background.js"],
