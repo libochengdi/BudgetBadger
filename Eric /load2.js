@@ -40,6 +40,8 @@ chrome.storage.local.get(["items"], function(object) {
         var node = document.createElement("LI");
         node.appendChild(textNode);
         document.getElementById("myList2").appendChild(node);
+
+        // console.log(document.getElementById("myLink").innerHTML);
     }
     function msConversion(millis) {
         let sec = Math.floor(millis / 1000);

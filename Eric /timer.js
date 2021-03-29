@@ -14,7 +14,8 @@
      let lap = 0;
 
      if (button) {
-        // TODO: Telling user how long they've been on browser before exiting
+         // TODO: How should we know when the user is closing a tab other than the extension?
+        // Telling user how long they've been on browser before exiting
         window.addEventListener('beforeunload', function (e) {
             e.preventDefault();
             e.returnValue = 'return event.returnValue = "Are you sure you want to exit?";';
@@ -23,7 +24,9 @@
          button.addEventListener("click", function() {
              let miliSeconds = new Date() - startTime;
 
-             let message = "Lap " + lap + ": " + msConversion(miliSeconds);
+             let message = "Lap " + lap + ": " + msConversion(miliSeconds) 
+             // + " at: " + document.title;
+             // It looks like document.title can only get the title of the timer.html webpage?
 
              var timeMsg = document.createTextNode(message);
              var node = document.createElement("LI");
@@ -41,6 +44,7 @@
  document.addEventListener("DOMContentLoaded", function() {
     init(); }, false);
 
+    // author: Benjamin Sheth
 function msConversion(millis) {
     let sec = Math.floor(millis / 1000);
     let hrs = Math.floor(sec / 3600);
