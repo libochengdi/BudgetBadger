@@ -9,7 +9,7 @@ chrome.storage.local.get(["items"], function(object) {
     if (typeof (history) !== "undefined") {
         var timeLong = 1;
         var timeLongMinSec = ":";
-        var historyLong = history[0].url;
+        var historyLong = history[0].url.trim();
         for (i = 0; i < history.length; ++i) {
             
             var time1 = 0;
@@ -21,21 +21,16 @@ chrome.storage.local.get(["items"], function(object) {
                 time2 = history[i + 1].time;
                 time = time2 - time1;
             }
-            if (time > timeLong)
+            if (time > timeLong) {
                 timeLong = time;
+                historyLong = history[i].url.trim();
+            }
             var timeMinSec = ":";
             if (time > 0)
                 timeMinSec = msConversion(time);
-            /*
-            var url = "URL: " + history[i].url + " Time: " + timeMinSec;
-            var textNode = document.createTextNode(url);
-            var node = document.createElement("LI");
-            node.appendChild(textNode);
-            document.getElementById("myList").appendChild(node);
-            */
         }
         timeLongMinSec = msConversion(timeLong);
-        var url = "URL: " + historyLong + " Time: " + timeLongMinSec;
+        var url = "URL: " + historyLong + " \nTime: " + timeLongMinSec;
         var textNode = document.createTextNode(url);
         var node = document.createElement("LI");
         node.appendChild(textNode);
