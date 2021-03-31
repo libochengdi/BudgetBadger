@@ -14,8 +14,7 @@
      let lap = 0;
 
      if (button) {
-         // TODO: How should we know when the user is closing a tab other than the extension?
-        // Telling user how long they've been on browser before exiting
+        // Telling user how long they've been on browser before exiting?
         window.addEventListener('beforeunload', function (e) {
             e.preventDefault();
             e.returnValue = 'return event.returnValue = "Are you sure you want to exit?";';

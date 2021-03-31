@@ -1,6 +1,6 @@
 {
-    "name": "View Active Tab",
-    "description": "A Simple Extension to View Recently Active Tabs",
+    "name": "Budget Badger",
+    "description": "A Simple Extension to View Recently Active Tabs, Longest Viewed Domain, and a Timer",
     "version": "0.1",
     "manifest_version": 3,
     "action": {
