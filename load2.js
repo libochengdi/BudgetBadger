@@ -1,6 +1,6 @@
 /**
  * load.js populates popup.html by getting the stored data from local storage
- * @author Benjamin Sheth
+ * @author Benjamin Sheth, Patrick Merchant
  */
 chrome.storage.local.get(["items"], function(object) {
     var history = object.items; // history is an array of objects which contain the urls of sites
@@ -35,9 +35,13 @@ chrome.storage.local.get(["items"], function(object) {
         var node = document.createElement("LI");
         node.appendChild(textNode);
         document.getElementById("myList2").appendChild(node);
-
-        // console.log(document.getElementById("myLink").innerHTML);
     }
+    
+    /*
+     * Converts time from milliseconds since Jan 1, 1970 00:00:00.000 GMT to min:sec.
+     * Code used from Stackoverflow: 
+     * https://stackoverflow.com/questions/21294302/converting-milliseconds-to-minutes-and-seconds-with-javascript
+     */
     function msConversion(millis) {
         let sec = Math.floor(millis / 1000);
         let hrs = Math.floor(sec / 3600);
