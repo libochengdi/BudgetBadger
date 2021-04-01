@@ -1,12 +1,9 @@
 /**
  * timer.js is a simple javascript function which allows users to start a timer on the webpage with a button
  * 
- * My group mate Benjamin Sheth created the function msConversion. I did a little copy+paste from his code. Thank you Ben! ^^
  * 
  * @author Eric Li
  */
-
- // console.log("Test, test");
 
  let init = function() {
      let button = document.querySelector("#timerButton");
@@ -34,8 +31,6 @@
              document.getElementById("stopwatchlist").appendChild(node);
 
              lap++;
-             //console.log(timeMsg);
-             //console.log(miliSeconds/1000 + "Seconds.")
          });
      }
  }
