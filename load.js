@@ -1,6 +1,6 @@
 /**
  * load.js populates popup.html by getting the stored data from local storage
- * @author Benjamin Sheth
+ * @author Benjamin Sheth, Patrick Merchant, Eric Li
  */
  chrome.storage.local.get(["items"], function(object) {
     var history = object.items; // history is an array of objects which contain the urls of sites
@@ -24,7 +24,6 @@
             var timeMinSec = ":";
             if (time > 0)
                 timeMinSec = msConversion(time);
-            //console.log(typeof history[i]);
             var url = "URL: " + history[i].url + " Time: " + timeMinSec;
             
             domains[count] = history[i].url;
@@ -87,7 +86,12 @@
 
         document.getElementById("longestdomain").innerHTML = "You have spent the most amount of time on the domain: " + newdomains[biggestIdx] + " for a total of " + timeSpent + ". ";
     }
-
+    
+    /*
+     * Converts time from milliseconds since Jan 1, 1970 00:00:00.000 GMT to min:sec.
+     * Code used from Stackoverflow: 
+     * https://stackoverflow.com/questions/21294302/converting-milliseconds-to-minutes-and-seconds-with-javascript
+     */
     function msConversion(millis) {
         let sec = Math.floor(millis / 1000);
         let hrs = Math.floor(sec / 3600);
