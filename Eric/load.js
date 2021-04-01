@@ -2,7 +2,7 @@
  * load.js populates popup.html by getting the stored data from local storage
  * @author Benjamin Sheth
  */
-chrome.storage.local.get(["items"], function(object) {
+ chrome.storage.local.get(["items"], function(object) {
     var history = object.items; // history is an array of objects which contain the urls of sites
                                 // you have visited and the time in milliseconds since Jan 1, 
                                 // 1970 00:00:00.000 GMT when it was visited
@@ -37,25 +37,21 @@ chrome.storage.local.get(["items"], function(object) {
             document.getElementById("myList").appendChild(node);
 
         }
-       
-        // 
-
-        //,https://www.gamersky.com/,
-        // chrome://newtab/,
-        // https://twitter.com/EliGE/status/1376956997942325250,
-        // https://www.google.com/search?q=can+javascript+do+continue&rlz=1C5CHFA_enUS870US870&oq=can+javascript+do+continue&aqs=chrome..69i57j0l3j0i22i30l6.4113j0j4&sourceid=chrome&ie=UTF-8
         
         // Calculate longest viewed domain part
         // https://www.domain.com
+
         var newdomains = new Array();
         var newviewtime = new Array();
-        // newdomains[0] = domains[0];
-        // newviewtime[0] = viewtime[0];
+
+        /*domains = ("chrome://newtab/", "https://www.hltv.org/", "https://www.gamersky.com/", "https://www.gamersky.com/", "https://login.wisc.edu");
+
+        viewtime = (1111, 2222, 33333, 33333, 54545);*/
 
         for (i = 0; i < domains.length; i++) {
-            if (domains[i].contains("chrome://newtab/")) {
+            /* if (domains[i].contains("chrome")) {
                 continue;
-            }
+            } */
 
             var domainname = domains[i].split(".")[1];
 
@@ -66,9 +62,30 @@ chrome.storage.local.get(["items"], function(object) {
                 newviewtime[i] = viewtime[i];
             }
 
-        } // Now we should have an array with each domain and view time
+        } 
+        // Now we should have an array with each domain and view time
 
-        document.getElementById("domainArr").innerHTML = newdomains;
+        var biggestIdx = 0;
+        var biggestViewTime = 0;
+        var currentViewTime = 0;
+
+        for (j = 0; j < newdomains.length; j++) {    
+            if (newdomains[j].length == null) {
+                continue;
+            } else {
+                currentViewTime = newviewtime[j]; 
+            }
+
+            if (currentViewTime > biggestViewTime) {
+                biggestIdx = j;
+                biggestViewTime = currentViewTime;
+            }
+
+        }
+
+        var timeSpent = msConversion(newviewtime[biggestIdx]);
+
+        document.getElementById("longestdomain").innerHTML = "You have spent the most amount of time on the domain: " + newdomains[biggestIdx] + " for a total of " + timeSpent + ". ";
     }
 
     function msConversion(millis) {
@@ -91,4 +108,5 @@ chrome.storage.local.get(["items"], function(object) {
         }
     }
 });
+
 
