@@ -43,7 +43,6 @@
  document.addEventListener("DOMContentLoaded", function() {
     init(); }, false);
 
-    // author: Benjamin Sheth
 function msConversion(millis) {
     let sec = Math.floor(millis / 1000);
     let hrs = Math.floor(sec / 3600);
