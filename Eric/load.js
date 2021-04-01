@@ -70,7 +70,7 @@
         var currentViewTime = 0;
 
         for (j = 0; j < newdomains.length; j++) {    
-            if (newdomains[j].length == null) {
+            if (newdomains[j] == null) {
                 continue;
             } else {
                 currentViewTime = newviewtime[j]; 
