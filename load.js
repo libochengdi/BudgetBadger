@@ -36,16 +36,9 @@
             document.getElementById("myList").appendChild(node);
 
         }
-        
-        // Calculate longest viewed domain part
-        // https://www.domain.com
 
         var newdomains = new Array();
         var newviewtime = new Array();
-
-        /*domains = ("chrome://newtab/", "https://www.hltv.org/", "https://www.gamersky.com/", "https://www.gamersky.com/", "https://login.wisc.edu");
-
-        viewtime = (1111, 2222, 33333, 33333, 54545);*/
 
         for (i = 0; i < domains.length; i++) {
             /* if (domains[i].contains("chrome")) {
